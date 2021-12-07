@@ -1,2 +1,2 @@
 # Texas TriValve
-![alt text](./Images/Summary_Fig.png)
+![alt text](./Images/Figure_Summary.png)
