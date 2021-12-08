@@ -10,10 +10,15 @@
 ## Code Description
 We provide Abaqus input files for the following simulation cases: 
 
-* Control_QuasiStatic.inp - Healthy tricuspid valve modeled from end-diastole to end-systole.
-* Control_Dynamic.inp - Healthy tricuspid valve model running over one cardiac cycle i.e from end-diastole to end-diastole.
-* FTR_QuasiStatic.inp - Regurgitant tricuspid valve model loaded to pathological pressures at end-diastole.
-* Annuloplasty_QuasiStatic.inp - Regurgitant tricuspid valve model repaired via annuloplasty, loaded to pathological pressures at end-diastole.
-* Clipping_QuasiStatic.inp - Regurgitant tricuspid valve model repaired via clip-based repair, loaded to pathological pressures at end-diastole.
+* Control_QuasiStatic.inp
+  * Healthy tricuspid valve modeled from end-diastole to end-systole.
+* Control_Dynamic.inp
+  * Healthy tricuspid valve model running over one cardiac cycle i.e from end-diastole to end-diastole.
+* FTR_QuasiStatic.inp
+  * Regurgitant tricuspid valve model loaded to pathological pressures at end-diastole.
+* Annuloplasty_QuasiStatic.inp
+  * Regurgitant tricuspid valve model repaired via annuloplasty, loaded to pathological pressures at end-diastole.
+* Clipping_QuasiStatic.inp
+  * Regurgitant tricuspid valve model repaired via clip-based repair, loaded to pathological pressures at end-diastole.
 
 Additionally, we provide a user defined material model (Leaflet_Material.f) that must be used to successfully run 
