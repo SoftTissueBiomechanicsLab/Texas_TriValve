@@ -59930,7 +59930,7 @@ Ori-1-DiscOrient
 3, 0.
 -0.681020,0.732265,0.0
 -0.681020,-0.732265,0.0
-*Solid Section, elset=POSTERIOR_LEAFLET_ELEMENTS, orientation=Ori-1, material=VUANISO_Posterior
+*Solid Section, elset=POSTERIOR_LEAFLET_ELEMENTS, orientation=Ori-1, material=VUANISO_ISO_Posterior
 ,
 *Distribution, name=Ori-3-DiscOrient, location=ELEMENT, Table=Ori-3-DiscOrient_Table
 ,           1.,           0.,           0.,           0.,           1.,           0.
@@ -70323,7 +70323,7 @@ Ori-3-DiscOrient
 1, 0.
 -1.000000,-0.000000,0.0
 -1.000000,0.000000,0.0
-*Solid Section, elset=ANTERIOR_LEAFLET_ELEMENTS, orientation=Ori-3, material=VUANISO_Anterior
+*Solid Section, elset=ANTERIOR_LEAFLET_ELEMENTS, orientation=Ori-3, material=VUANISO_ISO_Anterior
 ,
 *Distribution, name=Ori-2-DiscOrient, location=ELEMENT, Table=Ori-2-DiscOrient_Table
 ,           1.,           0.,           0.,           0.,           1.,           0.
@@ -75163,7 +75163,7 @@ Ori-3-DiscOrient
 Ori-2-DiscOrient
 3, 0.
 1.000000,0.000000,0.0
-*Solid Section, elset=SEPTAL_LEAFLET_ELEMENTS, orientation=Ori-2, material=VUANISO_Septal
+*Solid Section, elset=SEPTAL_LEAFLET_ELEMENTS, orientation=Ori-2, material=VUANISO_ISO_Septal
 ,
 *Solid Section, elset=Anterior_Chordae, material=Anterior_Chordae
 0.330301, 
@@ -75532,17 +75532,17 @@ Clip-2-1_RPSet, 5, 5
 *Hyperelastic, OGDEN, N=3 
 43.040245810758144, 0.000113878800484, 0.000135787756161, 0.004100909221214, 0.000293121663589, 0.054406871730778, 4.6623e-04, 0
   0.,
-*Material, name=VUANISO_Anterior
+*Material, name=VUANISO_ISO_Anterior
 *Density
 1e-09,
 *anisotropic hyperelastic, user,formulation=invariant, local directions=1, type=compressible, properties=4
 1.000000e-03,      20.0669, 1.188659e-04,     1.5260081e+01
-*Material, name=VUANISO_Psoterior
+*Material, name=VUANISO_ISO_Posterior
 *Density
 1e-09,
 *anisotropic hyperelastic, user,formulation=invariant, local directions=1, type=compressible, properties=4
 1.000000e-03,      20.0669, 2.204214e-04,     3.190703e+01
-*Material, name=VUANISO_Septal
+*Material, name=VUANISO_ISO_Septal
 *Density
 1e-09,
 *anisotropic hyperelastic, user,formulation=invariant, local directions=1, type=compressible, properties=4
