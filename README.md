@@ -23,7 +23,6 @@ We provide Abaqus input files used to run simulations of the healthy, diseased, 
 
 Additionally, we provide a user defined material model (Leaflet_Material.f) that must be used to successfully run the input files listed above.
 
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
 This work is licensed under a
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
