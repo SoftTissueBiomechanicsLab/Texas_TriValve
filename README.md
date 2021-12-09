@@ -10,11 +10,11 @@
 ## Code Description
 We provide Abaqus input files used to run simulations of the healthy, diseased, and repaired tricuspid valve. For additional details on simulation settings and element choices please refer to the main text. This repository includes the following input files: 
 
-* Control_QuasiStatic.inp
+* Healthy_QuasiStatic.inp
   * Healthy tricuspid valve modeled from end-diastole to end-systole.
-* Control_Dynamic.inp
+* Healthy_Dynamic.inp
   * Healthy tricuspid valve model running over one cardiac cycle i.e from end-diastole to end-diastole.
-* FTR_QuasiStatic.inp
+* Diseased_QuasiStatic.inp
   * Regurgitant tricuspid valve model loaded to pathological pressures at end-systole.
 * Annuloplasty_QuasiStatic.inp
   * Regurgitant tricuspid valve model repaired via annuloplasty, loaded to pathological pressures at end-systole.
