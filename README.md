@@ -21,7 +21,7 @@ We provide Abaqus input files used to run simulations of the healthy, diseased, 
 * Clipping_QuasiStatic.inp
   * Regurgitant tricuspid valve model repaired via clip-based repair, loaded to pathological pressures at end-systole.
 
-Additionally, we provide a user defined material model (Leaflet_Material.f) that must be used to successfully run the input files listed above.
+Additionally, we provide a user defined material model (Leaflet_Material.f) that must be used to successfully run the input files listed above. We recommend all models be run using double precision in Abaqus/Explicit
 
 
 This work is licensed under a
