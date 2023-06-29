@@ -23,6 +23,26 @@ We provide Abaqus input files used to run simulations of the healthy, diseased, 
 
 Additionally, we provide a user defined material model (Leaflet_Material.f) that must be used to successfully run the input files listed above. We recommend all models be run in double precision.
 
+## References
+If you find this repository useful for your research, please cite the following work:
+```
+@article{Mathur2022_TTV,
+author = {Mathur, Mrudang and Meador, William D. and Malinowski, Marcin and Jazwiec, Tomasz and Timek, Tomasz A. and Rausch, Manuel K.},
+doi = {10.1007/s00366-022-01659-w},
+isbn = {0123456789},
+issn = {0177-0667},
+journal = {Engineering with Computers},
+keywords = {Annuloplasty,Precision medicine,Predictive simulation,Repair,Transcatheter},
+month = {may},
+publisher = {Springer London},
+title = {{Texas TriValve 1.0 : a reverse-engineered, open model of the human tricuspid valve}},
+url = {https://link.springer.com/10.1007/s00366-022-01659-w},
+year = {2022}
+}
+
+
+```
+
 
 This work is licensed under a
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
