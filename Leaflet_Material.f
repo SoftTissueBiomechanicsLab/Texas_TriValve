@@ -83,7 +83,7 @@ c
         rI1m3 = rI1 - three
 		aux = exp(C2 * rI1m3 * rI1m3)
 c
-        ua(kb) = half * C0 * rI1m3 + half * C01 * (aux - 1) 
+        ua(kb) = half * C0 * rI1m3 + half * C1 * (aux - 1) 
 c		
         ui1(kb,index_I1) = half * C0 + C1 * C2 * rI1m3 * aux
 c
@@ -113,7 +113,7 @@ C
       include 'vaba_param.inc'
       ii = min (i, j)
       jj = max(i,j)
-      indx = ii + yy * (yy-1) / 2
+      indx = ii + jj * (jj-1) / 2
       return
       end
 C-------------------------------------------------------------
