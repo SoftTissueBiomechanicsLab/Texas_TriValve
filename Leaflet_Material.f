@@ -1,5 +1,3 @@
-C User Subroutine for Exponential Isotropic Material Model
-C by Mrudang Mathur 
 C-------------------------------------------------------------
       subroutine vuanisohyper_inv (nb, nFiber, nInv, nElement, nIntPt,
      $     nLayer, nSecPt, cmname, nstatev, nfieldv, numprops,
@@ -44,6 +42,96 @@ C
       end
 c------------------------------------------------------------------
 c
+c     Modified HGO model
+c
+      subroutine vuanisohyper_invhgo (ainv, ua, zeta, nfibers, ninv,
+     $     ui1, ui2, nb, numprops, props)
+C
+      include 'vaba_param.inc'
+C
+      dimension ua(nb), ainv(nb,ninv), ui1(nb,ninv),
+     $ ui2 (nb, ninv * (ninv + 1) / 2), props (numprops)
+C
+c     ainv: invariants
+c do: udev
+c     ui1 : dUdI
+c     ui2 : d2U/dIdJ
+C
+      parameter ( half = 0.5d0,
+     *            zero = 0.d0, 
+     *            one  = 1.d0, 
+     *            two  = 2.d0, 
+     *            three= 3.d0, 
+     *            four = 4.d0, 
+     *            five = 5.d0, 
+     *            six  = 6.d0,
+c
+     *            index_I1 = 1,
+     *            index_J  = 3,
+     *            asmall   = 2.d-16  )
+C
+C     Modified HGO model
+C
+      C10 = props(1)
+      rk1 = props(3)
+      rk2 = props(4)
+      rkp = props(5)
+      C01 = props(6)
+c
+      do kb = 1,nb
+        ua(kb) = zero
+        om3kp = one - three * rkp
+        do k1 = 1, nfibers
+          index_i4 = indxInv4(k1,k1)
+          E_alpha1 = rkp  * (ainv(kb,index_i1) - three) 
+     *            + om3kp * (ainv(kb,index_i4) - one  )
+          E_alpha = max(E_alpha1, zero)
+          ht4a    = half + sign(half,E_alpha1 + asmall)
+          aux = exp (rk2 * E_alpha * E_alpha)
+c energy
+          ua(kb) =ua(kb) + aux - one
+c ui1
+          ui1(kb,index_i1) = ui1(kb,index_i1) + aux * E_alpha
+          ui1(kb,index_i4) = rk1 * om3kp * aux * E_alpha
+c ui2
+          aux2 = ht4a + two * rk2 * E_alpha * E_alpha
+          ui2(kb,indx(index_I1,index_I1))=
+     *           ui2(kb,indx(index_I1,index_I1))
+     * + aux * aux2
+          ui2(kb,indx(index_I1,index_i4)) = rk1*rkp*om3kp * aux * aux2
+          ui2(kb,indx(index_i4,index_i4)) = rk1*om3kp*om3kp*aux * aux2
+        end do
+c
+c     deviatoric energy
+c
+        ua(kb) = ua(kb) * rk1 / (two * rk2)
+        ua(kb) = ua(kb) + C10 * (exp(C01*(ainv(kb,index_i1) - three))-1)
+c
+c     compute derivatives
+c
+        ui1(kb,index_i1) = rk1 * rkp * ui1(kb,index_i1) + C10
+     * *C01*exp(C01*(ainv(kb,index_i1) - three))   
+        ui2(kb,indx(index_I1,index_I1))= ui2(kb,indx(index_I1,index_I1)) 
+     * * rk1 * rkp * rkp +C10*C01*C01*exp(C01*(ainv(kb,index_i1) - three))
+      end do
+c     
+c     compressible case
+      if(props(2).gt.zero) then
+        do kb = 1,nb
+          Dinv = one / props(2)
+c		  print *,props(2)
+          det = ainv (kb, index_J)
+		  ui1(kb,index_J) = two*Dinv * (det - one)
+          ui2(kb,indx(index_J,index_J))= two*Dinv
+c          ui1 (kb, index_J) = Dinv * (det - one / det)
+c          ui2 (kb, indx (index_J, index_J)) = Dinv * (one + one / det / det)
+        end do
+      end if
+c
+      return
+      end
+c------------------------------------------------------------------
+c
 c     Exponential Isotropic model
 c
       subroutine vuanisohyper_iso (ainv, ua, zeta, nfibers, ninv,
@@ -72,6 +160,8 @@ c
      *            index_J  = 3,
      *            asmall   = 2.d-16  )
 C
+C     Exponential Isotropic model
+C
       C0 = props(1)
       C1 = props(3)
       C2 = props(4)
@@ -87,7 +177,7 @@ c
 c		
         ui1(kb,index_I1) = half * C0 + C1 * C2 * rI1m3 * aux
 c
-        ui2(kb,indx(index_I1,index_I1)) = C1 * C2 * aux * (one + two * rI1m3 * rI1m3)		
+        ui2(kb,indx(index_I1,index_I1)) = C1 * C2 * aux * (one + two * C2 * rI1m3 * rI1m3)	
       end do
 c     
 c     compressible case
