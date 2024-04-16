@@ -18,16 +18,7 @@ C
       if (cmname(1:11) .eq. 'VUANISO_HGO') then
          call VUANISOHYPER_INVHGO(sInvariant, uDev, zeta, nFiber, ninv,
      $     duDi, d2uDiDi, nb, numprops, props)
-      else if(cmname(1:14) .eq. 'VUANISO_INVISO') then
-         call VUANISOHYPER_INVISO(sInvariant, uDev, zeta, nFiber, ninv,
-     $     duDi, d2uDiDi, nb, numprops, props)
-      else if(cmname(1:17) .eq. 'VUANISO_FUNGINV44') then
-         call VUANISOHYPER_FUNGINV44(sInvariant, uDev, zeta, nFiber,
-     $ ninv, duDi, d2uDiDi, nb, numprops, props)
-      else if(cmname(1:17) .eq. 'VUANISO_FUNGINV45') then
-         call VUANISOHYPER_FUNGINV45(sInvariant, uDev, zeta, nFiber, 
-     $ ninv, duDi, d2uDiDi, nb, numprops, props)
-	  else if(cmname(1:11) .eq. 'VUANISO_ISO') then
+      else if(cmname(1:11) .eq. 'VUANISO_ISO') then
          call VUANISOHYPER_ISO(sInvariant, uDev, zeta, nFiber, 
      $ ninv, duDi, d2uDiDi, nb, numprops, props)
       else
@@ -177,7 +168,7 @@ c
 c		
         ui1(kb,index_I1) = half * C0 + C1 * C2 * rI1m3 * aux
 c
-        ui2(kb,indx(index_I1,index_I1)) = C1 * C2 * aux * (one + two * C2 * rI1m3 * rI1m3)	
+        ui2(kb,indx(index_I1,index_I1)) = C1*C2*aux*(one+two*C2*rI1m3*rI1m3)
       end do
 c     
 c     compressible case
@@ -186,7 +177,7 @@ c     compressible case
           Dinv = one / props(2)
 c		  print *,props(2)
           det = ainv (kb, index_J)
-		  ui1(kb,index_J) = two*Dinv * (det - one)
+          ui1(kb,index_J) = two*Dinv * (det - one)
           ui2(kb,indx(index_J,index_J))= two*Dinv
 c          ui1 (kb, index_J) = Dinv * (det - one / det)
 c          ui2 (kb, indx (index_J, index_J)) = Dinv * (one + one / det / det)
